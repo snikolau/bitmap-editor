@@ -5,9 +5,9 @@ RSpec.describe CommandParser do
     let(:file) { File.expand_path('spec/fixtures/example.txt') }
     let(:expected_output) do
       <<~EOS
-        O O O W
-        J J J J
-        U O O O
+        O O X O
+        J J X J
+        O O X Y
       EOS
     end
     subject { described_class.new.run(file) }

@@ -81,5 +81,14 @@ RSpec.describe CommandParser do
         end
       end
     end
+
+    context 'clear bitmap' do
+      let(:input) { StringIO.new("C") }
+
+      it 'calls editor to clean bitmap' do
+        expect(editor).to receive(:clean_bitmap)
+        subject
+      end
+    end
   end
 end

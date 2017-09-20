@@ -71,4 +71,16 @@ RSpec.describe Bitmap do
     specify { expect(subject.coordinate_within_bounds?(24, 45)).to be_falsy }
     specify { expect(subject.coordinate_within_bounds?(-1, 44)).to be_falsy }
   end
+
+  describe '#reset' do
+    subject { described_class.new(2, 1) }
+
+    it 'resets bitmap contents' do
+      subject.color_pixel(0,0, 'A')
+      expect(subject.to_s).to eq("A O\n")
+
+      subject.reset
+      expect(subject.to_s).to eq("O O\n")
+    end
+  end
 end

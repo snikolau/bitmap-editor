@@ -37,6 +37,10 @@ class BitmapEditor
     end
   end
 
+  def clean_bitmap
+    bitmap.reset
+  end
+
   private
 
   def vertical_line_in_bounds?(x, y1, y2)

@@ -68,4 +68,14 @@ RSpec.describe BitmapEditor do
       end
     end
   end
+
+  describe '#clean_bitmap' do
+    let(:bitmap) { instance_double(Bitmap) }
+    subject { described_class.new(bitmap) }
+
+    it 'proxies call to bitmap' do
+      expect(subject.bitmap).to receive(:reset)
+      subject.clean_bitmap
+    end
+  end
 end

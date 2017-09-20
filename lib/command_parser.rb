@@ -21,6 +21,8 @@ class CommandParser
         editor.draw_vertical_segment(*draw_segment_parameters(params))
       when 'H'
         editor.draw_horizontal_segment(*draw_segment_parameters(params))
+      when 'C'
+        editor.clean_bitmap
       else
         puts 'Unrecognised command.'
       end

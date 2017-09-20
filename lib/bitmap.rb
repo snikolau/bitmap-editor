@@ -31,6 +31,10 @@ class Bitmap
     x.between?(0, width - 1) && y.between?(0, height - 1)
   end
 
+  def reset
+    @data = clean_data
+  end
+
   private
 
   def validate_size
@@ -40,6 +44,10 @@ class Bitmap
   end
 
   def data
-    @data ||= Array.new(height) { Array.new(width, DEFAULT_FILL) }
+    @data ||= clean_data
+  end
+
+  def clean_data
+    Array.new(height) { Array.new(width, DEFAULT_FILL) }
   end
 end
