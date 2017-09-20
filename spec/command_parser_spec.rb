@@ -25,6 +25,29 @@ RSpec.describe CommandParser do
         expect(editor).to receive(:new_bitmap).with(5, 5)
         subject
       end
+
+      context 'when parameters are invalid' do
+        let(:input) { StringIO.new("I 1 1 A") }
+        it 'throws an error when parameters are invalid' do
+          expect { subject }.to raise_error(CommandParser::UnexpectedParameters)
+        end
+      end
+    end
+
+    context 'pixel coloring' do
+      let(:input) { StringIO.new("L 1 1 A") }
+
+      it 'calls editor to change pixel color at converted coordinates' do
+        expect(editor).to receive(:color_pixel).with(0, 0, 'A')
+        subject
+      end
+
+      context 'when parameters are invalid' do
+        let(:input) { StringIO.new("L 1 1") }
+        it 'throws an error when parameters are invalid' do
+          expect { subject }.to raise_error(CommandParser::UnexpectedParameters)
+        end
+      end
     end
   end
 end

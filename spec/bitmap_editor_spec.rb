@@ -18,4 +18,12 @@ RSpec.describe BitmapEditor do
       expect(subject.bitmap).to eq(new_bitmap)
     end
   end
+
+  describe '#color_pixel' do
+    subject { described_class.new }
+    it 'proxies method call to bitmap' do
+      expect(subject.bitmap).to receive(:color_pixel).with(1, 1, 'A')
+      subject.color_pixel(1, 1, 'A')
+    end
+  end
 end

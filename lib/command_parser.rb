@@ -1,4 +1,6 @@
 class CommandParser
+  UnexpectedParameters = Class.new(StandardError)
+
   def initialize(editor = BitmapEditor.new)
     @editor = editor
   end
@@ -13,6 +15,8 @@ class CommandParser
         puts editor.bitmap
       when 'I'
         editor.new_bitmap(*new_bitmap_parameters(params))
+      when 'L'
+        editor.color_pixel(*color_pixel_parameters(params))
       else
         puts 'Unrecognised command.'
       end
@@ -24,6 +28,12 @@ class CommandParser
   attr_reader :editor
 
   def new_bitmap_parameters(params)
+    raise UnexpectedParameters, "Parameters: #{params}" unless params.size == 2
     params.take(2).map(&:to_i)
+  end
+
+  def color_pixel_parameters(params)
+    raise UnexpectedParameters, "Parameters: #{params}" unless params.size == 3
+    params.take(2).map { |el| el.to_i - 1 }  << params.last
   end
 end

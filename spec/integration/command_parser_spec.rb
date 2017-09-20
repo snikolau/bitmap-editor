@@ -7,7 +7,7 @@ RSpec.describe CommandParser do
       <<~EOS
         O O O O
         O O O O
-        O O O O
+        U O O O
       EOS
     end
     subject { described_class.new.run(file) }
