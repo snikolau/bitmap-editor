@@ -17,6 +17,8 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require_relative '../lib/command_parser'
+require_relative '../lib/bitmap_editor'
+require_relative '../lib/bitmap'
 
 RSpec.configure do |config|
 

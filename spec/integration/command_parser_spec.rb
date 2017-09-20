@@ -3,7 +3,13 @@ require 'spec_helper'
 RSpec.describe CommandParser do
   describe '#run' do
     let(:file) { File.expand_path('spec/fixtures/example.txt') }
-    let(:expected_output) { "There is no image.\n" }
+    let(:expected_output) do
+      <<~EOS
+        O O O O
+        O O O O
+        O O O O
+      EOS
+    end
     subject { described_class.new.run(file) }
 
     it 'returns expected input' do

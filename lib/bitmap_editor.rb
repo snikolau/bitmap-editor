@@ -1,7 +1,7 @@
 class BitmapEditor
+  attr_reader :bitmap
 
-  def run(file)
-    return puts "#{file} please provide correct file" if file.nil? || !File.exists?(file)
-
+  def new_bitmap(width, height)
+    @bitmap = Bitmap.new(width, height)
   end
 end
