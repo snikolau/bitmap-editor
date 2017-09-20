@@ -27,6 +27,10 @@ class Bitmap
     data[y][x] = color
   end
 
+  def coordinate_within_bounds?(x, y)
+    x.between?(0, width - 1) && y.between?(0, height - 1)
+  end
+
   private
 
   def validate_size
@@ -37,9 +41,5 @@ class Bitmap
 
   def data
     @data ||= Array.new(height) { Array.new(width, DEFAULT_FILL) }
-  end
-
-  def coordinate_within_bounds?(x, y)
-    x.between?(0, width - 1) && y.between?(0, height - 1)
   end
 end

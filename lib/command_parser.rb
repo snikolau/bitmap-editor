@@ -17,6 +17,8 @@ class CommandParser
         editor.new_bitmap(*new_bitmap_parameters(params))
       when 'L'
         editor.color_pixel(*color_pixel_parameters(params))
+      when 'V'
+        editor.draw_vertical_segment(*draw_segment_parameters(params))
       else
         puts 'Unrecognised command.'
       end
@@ -35,5 +37,10 @@ class CommandParser
   def color_pixel_parameters(params)
     raise UnexpectedParameters, "Parameters: #{params}" unless params.size == 3
     params.take(2).map { |el| el.to_i - 1 }  << params.last
+  end
+
+  def draw_segment_parameters(params)
+    raise UnexpectedParameters, "Parameters: #{params}" unless params.size == 4
+    params.take(3).map { |el| el.to_i - 1 }  << params.last
   end
 end

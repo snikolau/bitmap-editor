@@ -61,4 +61,14 @@ RSpec.describe Bitmap do
       end
     end
   end
+
+  describe '#coordinates_within_bounds?' do
+    subject { described_class.new(25, 45) }
+    specify { expect(subject.coordinate_within_bounds?(0, 0)).to be_truthy }
+    specify { expect(subject.coordinate_within_bounds?(-0, 3)).to be_truthy }
+    specify { expect(subject.coordinate_within_bounds?(24, 44)).to be_truthy }
+    specify { expect(subject.coordinate_within_bounds?(25, 44)).to be_falsy }
+    specify { expect(subject.coordinate_within_bounds?(24, 45)).to be_falsy }
+    specify { expect(subject.coordinate_within_bounds?(-1, 44)).to be_falsy }
+  end
 end

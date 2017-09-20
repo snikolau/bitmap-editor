@@ -49,5 +49,21 @@ RSpec.describe CommandParser do
         end
       end
     end
+
+    context 'vertical line draw' do
+      let(:input) { StringIO.new('V 2 1 4 U') }
+
+      it 'calls editor to draw vertical line with converted coordinates' do
+        expect(editor).to receive(:draw_vertical_segment).with(1, 0, 3, 'U')
+        subject
+      end
+
+      context 'when parameters are invalid' do
+        let(:input) { StringIO.new("V 1 1") }
+        it 'throws an error when parameters are invalid' do
+          expect { subject }.to raise_error(CommandParser::UnexpectedParameters)
+        end
+      end
+    end
   end
 end
