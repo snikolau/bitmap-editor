@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require './lib/command_parser'
+
+CommandParser.new.run ARGV.first
