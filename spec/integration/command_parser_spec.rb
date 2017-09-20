@@ -6,7 +6,7 @@ RSpec.describe CommandParser do
     let(:expected_output) do
       <<~EOS
         O O O W
-        O O O W
+        J J J J
         U O O O
       EOS
     end

@@ -25,10 +25,27 @@ class BitmapEditor
     end
   end
 
+  def draw_horizontal_segment(x1, x2, y, color)
+    unless horizontal_line_in_bounds?(x1, x2, y)
+      raise Bitmap::CoordinatesOutOfBounds,
+            "x, from_y, to_y(#{x1}, #{x2}, #{y})," \
+            "bitmap bounds(#{bitmap.width}, #{bitmap.height})"
+    end
+
+    Range.new(*[x1,x2].sort).each do |x_i|
+      color_pixel(x_i, y, color)
+    end
+  end
+
   private
 
   def vertical_line_in_bounds?(x, y1, y2)
     bitmap.coordinate_within_bounds?(x, y1) &&
       bitmap.coordinate_within_bounds?(x, y2)
+  end
+
+  def horizontal_line_in_bounds?(x1, x2, y)
+    bitmap.coordinate_within_bounds?(x1, y) &&
+      bitmap.coordinate_within_bounds?(x2, y)
   end
 end

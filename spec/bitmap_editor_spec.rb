@@ -48,4 +48,24 @@ RSpec.describe BitmapEditor do
       end
     end
   end
+
+  describe '#draw_horizontal_segment' do
+    let(:bitmap) { instance_double(Bitmap, coordinate_within_bounds?: true) }
+    subject { described_class.new(bitmap) }
+
+    it 'calls pixel coloring at right coordinates to draw segment' do
+      expect(subject.bitmap).to receive(:color_pixel).with(1, 2, 'H')
+      expect(subject.bitmap).to receive(:color_pixel).with(2, 2, 'H')
+      expect(subject.bitmap).to receive(:color_pixel).with(3, 2, 'H')
+
+      subject.draw_horizontal_segment(1, 3, 2, 'H')
+    end
+
+    context 'when segment is not in bounds' do
+      let(:bitmap) { instance_double(Bitmap, coordinate_within_bounds?: false, width: 5, height: 5) }
+      it 'it raises error' do
+        expect { subject.draw_vertical_segment(1, 10, 11, 'A') }.to raise_error(Bitmap::CoordinatesOutOfBounds)
+      end
+    end
+  end
 end

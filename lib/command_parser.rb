@@ -19,6 +19,8 @@ class CommandParser
         editor.color_pixel(*color_pixel_parameters(params))
       when 'V'
         editor.draw_vertical_segment(*draw_segment_parameters(params))
+      when 'H'
+        editor.draw_horizontal_segment(*draw_segment_parameters(params))
       else
         puts 'Unrecognised command.'
       end
