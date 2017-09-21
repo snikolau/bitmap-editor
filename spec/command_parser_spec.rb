@@ -12,6 +12,11 @@ RSpec.describe BitmapEditor::CommandParser do
 
     context 'showing image' do
       let(:input) { StringIO.new("S") }
+
+      before do
+        allow($stdout).to receive(:puts).and_return(nil)
+      end
+
       it 'calls editor to show bitmap' do
         expect(editor).to receive(:bitmap)
         subject
