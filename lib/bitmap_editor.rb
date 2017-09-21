@@ -6,8 +6,8 @@ module BitmapEditor
   InvalidColor = Class.new(BitmapEditorError)
   CoordinatesOutOfBounds = Class.new(BitmapEditorError)
 
-  require 'bitmap_editor/null_bitmap'
-  require 'bitmap_editor/bitmap'
-  require 'bitmap_editor/editor'
-  require 'bitmap_editor/command_parser'
+  require_relative 'bitmap_editor/null_bitmap'
+  require_relative 'bitmap_editor/bitmap'
+  require_relative 'bitmap_editor/editor'
+  require_relative 'bitmap_editor/command_parser'
 end
