@@ -1,7 +1,7 @@
 class BitmapEditor
   attr_reader :bitmap
 
-  def initialize(bitmap = nil)
+  def initialize(bitmap = NullBitmap.new)
     @bitmap = bitmap
   end
 

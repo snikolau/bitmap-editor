@@ -2,6 +2,14 @@ require 'spec_helper'
 
 RSpec.describe BitmapEditor do
 
+  describe '.new' do
+    context 'when no parameters' do
+      it 'sets bitmap as NullBitmap by default' do
+        expect(subject.bitmap).to be_a(NullBitmap)
+      end
+    end
+  end
+
   describe '#new_bitmap' do
     subject { described_class.new }
     let(:new_bitmap) { instance_double(Bitmap) }
@@ -13,7 +21,7 @@ RSpec.describe BitmapEditor do
     end
 
     it 'assigns creates and assigns new bitmap' do
-      expect(subject.bitmap).to be_nil
+      expect(subject.bitmap).to_not eq(new_bitmap)
       subject.new_bitmap(width, height)
       expect(subject.bitmap).to eq(new_bitmap)
     end

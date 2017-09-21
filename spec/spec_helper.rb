@@ -19,6 +19,8 @@
 require_relative '../lib/command_parser'
 require_relative '../lib/bitmap_editor'
 require_relative '../lib/bitmap'
+require_relative '../lib/bitmap_error'
+require_relative '../lib/null_bitmap'
 
 RSpec.configure do |config|
 
