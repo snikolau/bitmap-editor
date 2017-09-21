@@ -33,7 +33,7 @@ module BitmapEditor
       when 'C'
         editor.clean_bitmap
       else
-        puts 'Unrecognised command.'
+        raise InvalidCommand
       end
 
     rescue BitmapNotInitialized
@@ -44,21 +44,28 @@ module BitmapEditor
       false
     rescue InvalidColor
       puts command_error(input, "Invalid color. It should be single capital letter.")
+      false
+    rescue InvalidSize
+      puts command_error(input, "Invalid bitmap size. Size should be in range 1 - 250.")
+      false
+    rescue InvalidCommand
+      puts command_error(input, "Invalid command.")
+      false
     end
 
     def new_bitmap_parameters(params)
-      raise UnexpectedParameters, "Parameters: #{params}" unless params.size == 2
+      raise InvalidCommand, "Parameters: #{params}" unless params.size == 2
       params.take(2).map(&:to_i)
     end
 
     def color_pixel_parameters(params)
-      raise UnexpectedParameters, "Parameters: #{params}" unless params.size == 3
-      params.take(2).map { |el| el.to_i - 1 }  << params.last
+      raise InvalidCommand, "Parameters: #{params}" unless params.size == 3
+      params.take(2).map { |el| el.to_i - 1 } << params.last
     end
 
     def draw_segment_parameters(params)
-      raise UnexpectedParameters, "Parameters: #{params}" unless params.size == 4
-      params.take(3).map { |el| el.to_i - 1 }  << params.last
+      raise InvalidCommand, "Parameters: #{params}" unless params.size == 4
+      params.take(3).map { |el| el.to_i - 1 } << params.last
     end
 
     def command_error(command, description)

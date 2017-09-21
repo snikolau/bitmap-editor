@@ -27,7 +27,7 @@ RSpec.describe BitmapEditor::CommandParser do
 
     context 'when file contains unrecognised command' do
       let(:file) { File.expand_path('spec/fixtures/bad_example.txt' ) }
-      let(:expected_output) { "Unrecognised command.\n" }
+      let(:expected_output) { "Error executing command: \"G\": Invalid command.\n" }
       it 'returns error message about unrecognised command' do
         expect { subject }.to output(expected_output).to_stdout
       end
@@ -53,6 +53,16 @@ RSpec.describe BitmapEditor::CommandParser do
       context 'when command has wrong color' do
         let(:file) { File.expand_path('spec/fixtures/example_wrong_color.txt' ) }
         let(:expected_output) { "Error executing command: \"L 2 2 8\": Invalid color. It should be single capital letter.\n" }
+
+        it 'returns error message and stops processing' do
+          expect { subject }.to output(expected_output).to_stdout
+        end
+      end
+
+      context 'when bitmap size is invalid' do
+        let(:file) { File.expand_path('spec/fixtures/example_wrong_size.txt' ) }
+        let(:expected_output) { "Error executing command: \"I 251 251\": " \
+                                "Invalid bitmap size. Size should be in range 1 - 250.\n" }
 
         it 'returns error message and stops processing' do
           expect { subject }.to output(expected_output).to_stdout

@@ -37,7 +37,7 @@ module BitmapEditor
 
     def validate_size
       if !height.between?(1, MAX_SIZE) || !width.between?(1, MAX_SIZE)
-        raise InvalidSize, "Bitmap size should be between (0, #{MAX_SIZE})"
+        raise InvalidSize, "Bitmap size should be between (1, #{MAX_SIZE})"
       end
     end
 

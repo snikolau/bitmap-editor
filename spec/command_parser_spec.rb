@@ -33,8 +33,8 @@ RSpec.describe BitmapEditor::CommandParser do
 
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("I 1 1 A") }
-        it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
+        it 'prints an error when parameters are invalid' do
+          expect { subject }.to output(/Error/).to_stdout
         end
       end
     end
@@ -49,8 +49,8 @@ RSpec.describe BitmapEditor::CommandParser do
 
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("L 1 1") }
-        it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
+        it 'prints an error when parameters are invalid' do
+          expect { subject }.to output(/Error/).to_stdout
         end
       end
     end
@@ -65,8 +65,8 @@ RSpec.describe BitmapEditor::CommandParser do
 
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("V 1 1") }
-        it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
+        it 'prints an error when parameters are invalid' do
+          expect { subject }.to output(/Error/).to_stdout
         end
       end
     end
@@ -81,8 +81,8 @@ RSpec.describe BitmapEditor::CommandParser do
 
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("H 1 1 1") }
-        it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
+        it 'prints an error when parameters are invalid' do
+          expect { subject }.to output(/Error/).to_stdout
         end
       end
     end

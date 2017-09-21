@@ -1,6 +1,6 @@
 module BitmapEditor
   BitmapEditorError = Class.new(StandardError)
-  UnexpectedParameters = Class.new(BitmapEditorError)
+  InvalidCommand = Class.new(BitmapEditorError)
   BitmapNotInitialized = Class.new(BitmapEditorError)
   InvalidSize = Class.new(BitmapEditorError)
   InvalidColor = Class.new(BitmapEditorError)
