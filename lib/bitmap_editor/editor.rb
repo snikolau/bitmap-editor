@@ -21,7 +21,7 @@ module BitmapEditor
               "bitmap bounds(#{bitmap.width}, #{bitmap.height})"
       end
 
-      Range.new(*[y1,y2].sort).each do |y_i|
+      Range.new(*[y1, y2].sort).each do |y_i|
         color_pixel(x, y_i, color)
       end
     end
@@ -33,7 +33,7 @@ module BitmapEditor
               "bitmap bounds(#{bitmap.width}, #{bitmap.height})"
       end
 
-      Range.new(*[x1,x2].sort).each do |x_i|
+      Range.new(*[x1, x2].sort).each do |x_i|
         color_pixel(x_i, y, color)
       end
     end

@@ -1,7 +1,7 @@
 module BitmapEditor
   class NullBitmap
     def to_s
-      "Bitmap is not initialized."
+      'Bitmap is not initialized.'
     end
 
     def color_pixel(_x, _y, _color)

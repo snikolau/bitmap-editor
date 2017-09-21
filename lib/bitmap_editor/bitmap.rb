@@ -19,7 +19,7 @@ module BitmapEditor
     end
 
     def color_pixel(x, y, color)
-      validate_bounds(x,y)
+      validate_bounds(x, y)
       validate_color(color)
 
       data[y][x] = color

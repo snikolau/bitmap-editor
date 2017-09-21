@@ -11,7 +11,7 @@ RSpec.describe BitmapEditor::CommandParser do
     end
 
     context 'showing image' do
-      let(:input) { StringIO.new("S") }
+      let(:input) { StringIO.new('S') }
 
       before do
         allow($stdout).to receive(:puts).and_return(nil)
@@ -24,7 +24,7 @@ RSpec.describe BitmapEditor::CommandParser do
     end
 
     context 'creating image' do
-      let(:input) { StringIO.new("I 5 5") }
+      let(:input) { StringIO.new('I 5 5') }
 
       it 'calls editor to create new bitmap with valid parameters' do
         expect(editor).to receive(:new_bitmap).with(5, 5)
@@ -32,7 +32,7 @@ RSpec.describe BitmapEditor::CommandParser do
       end
 
       context 'when parameters are invalid' do
-        let(:input) { StringIO.new("I 1 1 A") }
+        let(:input) { StringIO.new('I 1 1 A') }
         it 'prints an error when parameters are invalid' do
           expect { subject }.to output(/Error/).to_stdout
         end
@@ -40,7 +40,7 @@ RSpec.describe BitmapEditor::CommandParser do
     end
 
     context 'pixel coloring' do
-      let(:input) { StringIO.new("L 1 1 A") }
+      let(:input) { StringIO.new('L 1 1 A') }
 
       it 'calls editor to change pixel color at converted coordinates' do
         expect(editor).to receive(:color_pixel).with(0, 0, 'A')
@@ -48,7 +48,7 @@ RSpec.describe BitmapEditor::CommandParser do
       end
 
       context 'when parameters are invalid' do
-        let(:input) { StringIO.new("L 1 1") }
+        let(:input) { StringIO.new('L 1 1') }
         it 'prints an error when parameters are invalid' do
           expect { subject }.to output(/Error/).to_stdout
         end
@@ -64,7 +64,7 @@ RSpec.describe BitmapEditor::CommandParser do
       end
 
       context 'when parameters are invalid' do
-        let(:input) { StringIO.new("V 1 1") }
+        let(:input) { StringIO.new('V 1 1') }
         it 'prints an error when parameters are invalid' do
           expect { subject }.to output(/Error/).to_stdout
         end
@@ -80,7 +80,7 @@ RSpec.describe BitmapEditor::CommandParser do
       end
 
       context 'when parameters are invalid' do
-        let(:input) { StringIO.new("H 1 1 1") }
+        let(:input) { StringIO.new('H 1 1 1') }
         it 'prints an error when parameters are invalid' do
           expect { subject }.to output(/Error/).to_stdout
         end
@@ -88,7 +88,7 @@ RSpec.describe BitmapEditor::CommandParser do
     end
 
     context 'clear bitmap' do
-      let(:input) { StringIO.new("C") }
+      let(:input) { StringIO.new('C') }
 
       it 'calls editor to clean bitmap' do
         expect(editor).to receive(:clean_bitmap)

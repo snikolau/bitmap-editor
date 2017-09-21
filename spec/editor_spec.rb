@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe BitmapEditor::Editor do
-
   describe '.new' do
     context 'when no parameters' do
       it 'sets bitmap as NullBitmap by default' do
