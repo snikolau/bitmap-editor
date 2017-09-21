@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe CommandParser do
+RSpec.describe BitmapEditor::CommandParser do
   describe '#run' do
     let(:file) { File.expand_path('spec/fixtures/example.txt') }
     let(:expected_output) do

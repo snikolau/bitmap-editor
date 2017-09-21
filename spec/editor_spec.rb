@@ -1,23 +1,23 @@
 require 'spec_helper'
 
-RSpec.describe BitmapEditor do
+RSpec.describe BitmapEditor::Editor do
 
   describe '.new' do
     context 'when no parameters' do
       it 'sets bitmap as NullBitmap by default' do
-        expect(subject.bitmap).to be_a(NullBitmap)
+        expect(subject.bitmap).to be_a(BitmapEditor::NullBitmap)
       end
     end
   end
 
   describe '#new_bitmap' do
     subject { described_class.new }
-    let(:new_bitmap) { instance_double(Bitmap) }
+    let(:new_bitmap) { instance_double(BitmapEditor::Bitmap) }
     let(:width) { 5 }
     let(:height) { 5 }
 
     before do
-      allow(Bitmap).to receive(:new).with(width, height).and_return(new_bitmap)
+      allow(BitmapEditor::Bitmap).to receive(:new).with(width, height).and_return(new_bitmap)
     end
 
     it 'assigns creates and assigns new bitmap' do
@@ -28,7 +28,7 @@ RSpec.describe BitmapEditor do
   end
 
   describe '#color_pixel' do
-    let(:bitmap) { instance_double(Bitmap) }
+    let(:bitmap) { instance_double(BitmapEditor::Bitmap) }
     subject { described_class.new(bitmap) }
 
     it 'proxies method call to bitmap' do
@@ -38,7 +38,7 @@ RSpec.describe BitmapEditor do
   end
 
   describe '#draw_vertical_segment' do
-    let(:bitmap) { instance_double(Bitmap, coordinate_within_bounds?: true) }
+    let(:bitmap) { instance_double(BitmapEditor::Bitmap, coordinate_within_bounds?: true) }
     subject { described_class.new(bitmap) }
 
     it 'calls pixel coloring at right coordinates to draw segment' do
@@ -50,15 +50,15 @@ RSpec.describe BitmapEditor do
     end
 
     context 'when segment is not in bounds' do
-      let(:bitmap) { instance_double(Bitmap, coordinate_within_bounds?: false, width: 5, height: 5) }
+      let(:bitmap) { instance_double(BitmapEditor::Bitmap, coordinate_within_bounds?: false, width: 5, height: 5) }
       it 'it raises error' do
-        expect { subject.draw_vertical_segment(1, 10, 11, 'A') }.to raise_error(Bitmap::CoordinatesOutOfBounds)
+        expect { subject.draw_vertical_segment(1, 10, 11, 'A') }.to raise_error(BitmapEditor::CoordinatesOutOfBounds)
       end
     end
   end
 
   describe '#draw_horizontal_segment' do
-    let(:bitmap) { instance_double(Bitmap, coordinate_within_bounds?: true) }
+    let(:bitmap) { instance_double(BitmapEditor::Bitmap, coordinate_within_bounds?: true) }
     subject { described_class.new(bitmap) }
 
     it 'calls pixel coloring at right coordinates to draw segment' do
@@ -70,15 +70,15 @@ RSpec.describe BitmapEditor do
     end
 
     context 'when segment is not in bounds' do
-      let(:bitmap) { instance_double(Bitmap, coordinate_within_bounds?: false, width: 5, height: 5) }
+      let(:bitmap) { instance_double(BitmapEditor::Bitmap, coordinate_within_bounds?: false, width: 5, height: 5) }
       it 'it raises error' do
-        expect { subject.draw_vertical_segment(1, 10, 11, 'A') }.to raise_error(Bitmap::CoordinatesOutOfBounds)
+        expect { subject.draw_vertical_segment(1, 10, 11, 'A') }.to raise_error(BitmapEditor::CoordinatesOutOfBounds)
       end
     end
   end
 
   describe '#clean_bitmap' do
-    let(:bitmap) { instance_double(Bitmap) }
+    let(:bitmap) { instance_double(BitmapEditor::Bitmap) }
     subject { described_class.new(bitmap) }
 
     it 'proxies call to bitmap' do

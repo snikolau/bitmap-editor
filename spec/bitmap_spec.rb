@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Bitmap do
+RSpec.describe BitmapEditor::Bitmap do
   describe '.new' do
     it 'stores width and height values' do
       bitmap = described_class.new(5, 8)
@@ -10,15 +10,15 @@ RSpec.describe Bitmap do
 
     context 'when input size is invalid' do
       it 'raises an exception when size is bigger then limit' do
-        expect { described_class.new(described_class::MAX_SIZE+1, 5) }.to raise_error(Bitmap::InvalidSize)
-        expect { described_class.new(5, described_class::MAX_SIZE+1) }.to raise_error(Bitmap::InvalidSize)
+        expect { described_class.new(described_class::MAX_SIZE+1, 5) }.to raise_error(BitmapEditor::InvalidSize)
+        expect { described_class.new(5, described_class::MAX_SIZE+1) }.to raise_error(BitmapEditor::InvalidSize)
 
         expect { described_class.new(5, described_class::MAX_SIZE) }.to_not raise_error
       end
 
       it 'raises an exception when size is less then 1' do
-        expect { described_class.new(0, 5) }.to raise_error(Bitmap::InvalidSize)
-        expect { described_class.new(-5, 1) }.to raise_error(Bitmap::InvalidSize)
+        expect { described_class.new(0, 5) }.to raise_error(BitmapEditor::InvalidSize)
+        expect { described_class.new(-5, 1) }.to raise_error(BitmapEditor::InvalidSize)
 
         expect { described_class.new(1, described_class::MAX_SIZE) }.to_not raise_error
       end
@@ -57,7 +57,7 @@ RSpec.describe Bitmap do
 
     context 'when coordinates are out of boundaries' do
       it 'raises error' do
-        expect { subject.color_pixel(1, 3, 'A') }.to raise_error(Bitmap::CoordinatesOutOfBounds)
+        expect { subject.color_pixel(1, 3, 'A') }.to raise_error(BitmapEditor::CoordinatesOutOfBounds)
       end
     end
   end

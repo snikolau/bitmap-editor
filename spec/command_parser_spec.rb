@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe CommandParser do
+RSpec.describe BitmapEditor::CommandParser do
   describe 'command parsing' do
-    let(:editor) { instance_double(BitmapEditor) }
+    let(:editor) { instance_double(BitmapEditor::Editor) }
     subject { described_class.new(editor).run('not_important') }
 
     before do
@@ -29,7 +29,7 @@ RSpec.describe CommandParser do
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("I 1 1 A") }
         it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(CommandParser::UnexpectedParameters)
+          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
         end
       end
     end
@@ -45,7 +45,7 @@ RSpec.describe CommandParser do
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("L 1 1") }
         it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(CommandParser::UnexpectedParameters)
+          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
         end
       end
     end
@@ -61,7 +61,7 @@ RSpec.describe CommandParser do
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("V 1 1") }
         it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(CommandParser::UnexpectedParameters)
+          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
         end
       end
     end
@@ -77,7 +77,7 @@ RSpec.describe CommandParser do
       context 'when parameters are invalid' do
         let(:input) { StringIO.new("H 1 1 1") }
         it 'throws an error when parameters are invalid' do
-          expect { subject }.to raise_error(CommandParser::UnexpectedParameters)
+          expect { subject }.to raise_error(BitmapEditor::UnexpectedParameters)
         end
       end
     end
