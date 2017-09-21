@@ -34,6 +34,9 @@ module BitmapEditor
       else
         raise InvalidCommand
       end
+
+      true
+
     rescue BitmapNotInitialized
       puts command_error(input, 'Bitmap was not initialized yet.')
       false
