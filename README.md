@@ -13,3 +13,6 @@ X1 and X2 (inclusive).
 # Running
 
 `>bin/bitmap_editor examples/show.txt`
+
+# Remarks
+As this was not a main focus of this exercise, current implementation reads commands one by one, there is no optimisation on command scanning, to prevent unnecessary bitmap operations, like skip drawing if in the next step there is a command to clean bitmap. Additionally there could be a small optimisation made for loop execution to reduce amount of steps.
