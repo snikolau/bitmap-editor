@@ -39,6 +39,9 @@ module BitmapEditor
     rescue BitmapNotInitialized
       puts command_error(input, "Bitmap was not initialized yet.")
       false
+    rescue CoordinatesOutOfBounds
+      puts command_error(input, "Coordinates are out of bitmap bounds")
+      false
     end
 
     def new_bitmap_parameters(params)

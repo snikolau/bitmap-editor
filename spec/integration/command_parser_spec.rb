@@ -34,9 +34,17 @@ RSpec.describe BitmapEditor::CommandParser do
     end
 
     context 'input with invalid commands' do
-      context 'bitmap is not initialized when operation is executed' do
+      context 'when bitmap is not initialized when operation is executed' do
         let(:file) { File.expand_path('spec/fixtures/example_no_image.txt' ) }
         let(:expected_output) { "Error executing command: \"L 1 1 A\": Bitmap was not initialized yet.\n" }
+        it 'returns error message and stops processing' do
+          expect { subject }.to output(expected_output).to_stdout
+        end
+      end
+
+      context 'when command has wrong coordinates' do
+        let(:file) { File.expand_path('spec/fixtures/example_wrong_coordinates.txt' ) }
+        let(:expected_output) { "Error executing command: \"L 5 5 A\": Coordinates are out of bitmap bounds\n" }
         it 'returns error message and stops processing' do
           expect { subject }.to output(expected_output).to_stdout
         end
