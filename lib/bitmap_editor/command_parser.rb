@@ -42,6 +42,8 @@ module BitmapEditor
     rescue CoordinatesOutOfBounds
       puts command_error(input, "Coordinates are out of bitmap bounds")
       false
+    rescue InvalidColor
+      puts command_error(input, "Invalid color. It should be single capital letter.")
     end
 
     def new_bitmap_parameters(params)

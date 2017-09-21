@@ -3,6 +3,7 @@ module BitmapEditor
   UnexpectedParameters = Class.new(BitmapEditorError)
   BitmapNotInitialized = Class.new(BitmapEditorError)
   InvalidSize = Class.new(BitmapEditorError)
+  InvalidColor = Class.new(BitmapEditorError)
   CoordinatesOutOfBounds = Class.new(BitmapEditorError)
 
   require 'bitmap_editor/null_bitmap'

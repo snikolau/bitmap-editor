@@ -49,6 +49,15 @@ RSpec.describe BitmapEditor::CommandParser do
           expect { subject }.to output(expected_output).to_stdout
         end
       end
+
+      context 'when command has wrong color' do
+        let(:file) { File.expand_path('spec/fixtures/example_wrong_color.txt' ) }
+        let(:expected_output) { "Error executing command: \"L 2 2 8\": Invalid color. It should be single capital letter.\n" }
+
+        it 'returns error message and stops processing' do
+          expect { subject }.to output(expected_output).to_stdout
+        end
+      end
     end
   end
 end

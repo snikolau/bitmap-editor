@@ -60,6 +60,12 @@ RSpec.describe BitmapEditor::Bitmap do
         expect { subject.color_pixel(1, 3, 'A') }.to raise_error(BitmapEditor::CoordinatesOutOfBounds)
       end
     end
+
+    context 'when color is invalid' do
+      it 'raises invalid color error' do
+        expect { subject.color_pixel(1, 1, 'z') }.to raise_error(BitmapEditor::InvalidColor)
+      end
+    end
   end
 
   describe '#coordinates_within_bounds?' do
