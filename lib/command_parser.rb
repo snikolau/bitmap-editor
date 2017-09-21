@@ -1,3 +1,5 @@
+require_relative 'bitmap_editor'
+
 class CommandParser
   UnexpectedParameters = Class.new(StandardError)
 
