@@ -1,6 +1,5 @@
 module BitmapEditor
   class CommandParser
-
     def initialize(editor = Editor.new)
       @editor = editor
     end
@@ -35,21 +34,20 @@ module BitmapEditor
       else
         raise InvalidCommand
       end
-
     rescue BitmapNotInitialized
-      puts command_error(input, "Bitmap was not initialized yet.")
+      puts command_error(input, 'Bitmap was not initialized yet.')
       false
     rescue CoordinatesOutOfBounds
-      puts command_error(input, "Coordinates are out of bitmap bounds")
+      puts command_error(input, 'Coordinates are out of bitmap bounds')
       false
     rescue InvalidColor
-      puts command_error(input, "Invalid color. It should be single capital letter.")
+      puts command_error(input, 'Invalid color. It should be single capital letter.')
       false
     rescue InvalidSize
-      puts command_error(input, "Invalid bitmap size. Size should be in range 1 - 250.")
+      puts command_error(input, 'Invalid bitmap size. Size should be in range 1 - 250.')
       false
     rescue InvalidCommand
-      puts command_error(input, "Invalid command.")
+      puts command_error(input, 'Invalid command.')
       false
     end
 
