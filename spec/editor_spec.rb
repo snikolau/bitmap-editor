@@ -71,7 +71,7 @@ RSpec.describe BitmapEditor::Editor do
     context 'when segment is not in bounds' do
       let(:bitmap) { instance_double(BitmapEditor::Bitmap, coordinate_within_bounds?: false, width: 5, height: 5) }
       it 'it raises error' do
-        expect { subject.draw_vertical_segment(1, 10, 11, 'A') }.to raise_error(BitmapEditor::CoordinatesOutOfBounds)
+        expect { subject.draw_horizontal_segment(1, 10, 11, 'A') }.to raise_error(BitmapEditor::CoordinatesOutOfBounds)
       end
     end
   end
