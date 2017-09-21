@@ -18,7 +18,26 @@ module BitmapEditor
 
     def run_command(input)
       command, *params = input.chomp.split(' ')
+      delegate_command(command, params)
+      true
+    rescue BitmapNotInitialized
+      puts command_error(input, 'Bitmap was not initialized yet.')
+      false
+    rescue CoordinatesOutOfBounds
+      puts command_error(input, 'Coordinates are out of bitmap bounds')
+      false
+    rescue InvalidColor
+      puts command_error(input, 'Invalid color. It should be single capital letter.')
+      false
+    rescue InvalidSize
+      puts command_error(input, 'Invalid bitmap size. Size should be in range 1 - 250.')
+      false
+    rescue InvalidCommand
+      puts command_error(input, 'Invalid command.')
+      false
+    end
 
+    def delegate_command(command, params)
       case command
       when 'S'
         puts editor.bitmap
@@ -35,24 +54,6 @@ module BitmapEditor
       else
         raise InvalidCommand
       end
-
-      true
-
-    rescue BitmapNotInitialized
-      puts command_error(input, 'Bitmap was not initialized yet.')
-      false
-    rescue CoordinatesOutOfBounds
-      puts command_error(input, 'Coordinates are out of bitmap bounds')
-      false
-    rescue InvalidColor
-      puts command_error(input, 'Invalid color. It should be single capital letter.')
-      false
-    rescue InvalidSize
-      puts command_error(input, 'Invalid bitmap size. Size should be in range 1 - 250.')
-      false
-    rescue InvalidCommand
-      puts command_error(input, 'Invalid command.')
-      false
     end
 
     def new_bitmap_parameters(params)
