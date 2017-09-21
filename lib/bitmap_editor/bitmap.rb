@@ -1,4 +1,5 @@
 module BitmapEditor
+  # Data representation of bitmap structure with helper methods
   class Bitmap
     COLOR_REGEX = /\A[A-Z]\z/
     DEFAULT_FILL = 'O'.freeze

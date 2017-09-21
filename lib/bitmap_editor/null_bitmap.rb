@@ -1,4 +1,6 @@
 module BitmapEditor
+  # Null class used in cases when there is no bitmap
+  # initialized within editor.
   class NullBitmap
     def to_s
       'Bitmap is not initialized.'

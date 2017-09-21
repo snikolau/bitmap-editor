@@ -1,4 +1,5 @@
 module BitmapEditor
+  # Core class responsible of bitmap manipulations
   class Editor
     attr_reader :bitmap
 

@@ -1,4 +1,5 @@
 module BitmapEditor
+  # Parses input command and delegates operations to bitmap editor
   class CommandParser
     def initialize(editor = Editor.new)
       @editor = editor

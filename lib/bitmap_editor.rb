@@ -1,3 +1,4 @@
+# Main module of BitmapEditor
 module BitmapEditor
   BitmapEditorError = Class.new(StandardError)
   InvalidCommand = Class.new(BitmapEditorError)
