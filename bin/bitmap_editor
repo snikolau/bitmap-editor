@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require './lib/command_parser'
+require './lib/bitmap_editor'
 
-CommandParser.new.run ARGV.first
+BitmapEditor::CommandParser.new.run ARGV.first
